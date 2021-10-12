@@ -2,20 +2,35 @@
   <div>
     <h2 id="page-heading" data-cy="ClipHeading">
       <span v-text="$t('clipsApp.clip.home.title')" id="clip-heading">Clips</span>
-      <div class="d-flex justify-content-end">
-        <button class="btn btn-info mr-2" v-on:click="takeScreenshot" :disabled="isFetching">
-          <span>TakeScreenshot</span>
-        </button>
-        <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
-          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
-          <span v-text="$t('clipsApp.clip.home.refreshListLabel')">Refresh List</span>
-        </button>
-        <router-link :to="{ name: 'ClipCreate' }" custom v-slot="{ navigate }">
-          <button @click="navigate" id="jh-create-entity" data-cy="entityCreateButton" class="btn btn-primary jh-create-entity create-clip">
-            <font-awesome-icon icon="plus"></font-awesome-icon>
-            <span v-text="$t('clipsApp.clip.home.createLabel')"> Create a new Clip </span>
+      <div>
+        <div class="form-group creatorSelect">
+          <select class="form-control" id="clip-creator" name="creator" v-on:change="getSelectedClipUser($event)">
+            <option v-bind:value="null"></option>
+            <option v-for="clipUserOption in clipUsers" :key="clipUserOption.id">
+              {{ clipUserOption.id + ' : ' + clipUserOption.internalUser.login }}
+            </option>
+          </select>
+        </div>
+        <div class="d-flex justify-content-end">
+          <button class="btn btn-info mr-2" v-on:click="takeScreenshot" :disabled="isFetching">
+            <span>TakeScreenshot</span>
           </button>
-        </router-link>
+          <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
+            <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
+            <span v-text="$t('clipsApp.clip.home.refreshListLabel')">Refresh List</span>
+          </button>
+          <router-link :to="{ name: 'ClipCreate' }" custom v-slot="{ navigate }">
+            <button
+              @click="navigate"
+              id="jh-create-entity"
+              data-cy="entityCreateButton"
+              class="btn btn-primary jh-create-entity create-clip"
+            >
+              <font-awesome-icon icon="plus"></font-awesome-icon>
+              <span v-text="$t('clipsApp.clip.home.createLabel')"> Create a new Clip </span>
+            </button>
+          </router-link>
+        </div>
       </div>
     </h2>
     <br />

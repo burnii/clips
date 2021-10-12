@@ -9,7 +9,7 @@ import JhiDataUtils from '@/shared/data/data-utils.service';
 import ClipService from './clip.service';
 import AlertService from '@/shared/alert/alert.service';
 import UserManagementService from '@/admin/user-management/user-management.service';
-import { ClipUser } from '@/shared/model/clip-user.model';
+import { ClipUser, IClipUser } from '@/shared/model/clip-user.model';
 import ClipUserService from '../clip-user/clip-user.service';
 
 @Component({
@@ -24,11 +24,13 @@ export default class Clip extends mixins(JhiDataUtils) {
   private removeId: number = null;
 
   public clips: IClip[] = [];
+  public clipUsers: IClipUser[] = [];
 
   public isFetching = false;
 
   public mounted(): void {
     this.retrieveAllClips();
+    this.initRelationships();
   }
 
   public clear(): void {
@@ -41,6 +43,7 @@ export default class Clip extends mixins(JhiDataUtils) {
       .retrieve()
       .then(
         res => {
+          console.log('asd');
           console.log(res);
           this.clips = res.data;
           this.isFetching = false;
@@ -50,6 +53,16 @@ export default class Clip extends mixins(JhiDataUtils) {
           this.alertService().showHttpError(this, err.response);
         }
       );
+  }
+
+  public getSelectedClipUser(e) {
+    console.log(e.target.value);
+    console.log(this.clips);
+    if (e.target.value != '') {
+      this.clips = this.clips.filter(x => x.creator != null && x.creator.id == e.target.value.split(':')[0]);
+    } else {
+      this.retrieveAllClips();
+    }
   }
 
   public handleSyncList(): void {
@@ -170,5 +183,13 @@ export default class Clip extends mixins(JhiDataUtils) {
 
   public closeDialog(): void {
     (<any>this.$refs.removeEntity).hide();
+  }
+
+  public initRelationships(): void {
+    this.clipUserService()
+      .retrieve()
+      .then(res => {
+        this.clipUsers = res.data;
+      });
   }
 }

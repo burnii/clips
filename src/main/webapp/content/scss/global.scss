@@ -284,7 +284,11 @@ entity detail page css
   font-weight: bold;
   margin-left: 10px;
 }
-
+.creatorSelect {
+  width: 150px;
+  position: fixed;
+  left: 155px;
+}
 .rating {
   width: 50%;
   display: flex;
