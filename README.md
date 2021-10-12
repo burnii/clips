@@ -70,7 +70,7 @@ Anschließend folgt eine Abfrage, welche Pipeline verwendet werden soll. Folgend
 In diesem Projekt soll GitHub Actions verwendet werden und wird dementsprechend ausgewählt. Die darauf folgende Aufforderung eine Integration zu verwenden wird mit 
 Drücken von Enter übersprungen, da dies nicht benötigt wird. Im Anschluss wird im Projektordner ein yaml-Konfigurationsfile erstellt. Diese Änderungen werden anschließend gepushed, sodass Continuous Integration mit GitHub Actions verwendet werden kann. Folgende Abbildung zeigt das Ergebnis:
 
-
+[!alt text](https://github.com/burnii/clips/blob/main/images/CI.PNG)
 
 
 
