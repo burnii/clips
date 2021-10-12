@@ -3,6 +3,9 @@
     <h2 id="page-heading" data-cy="ClipHeading">
       <span v-text="$t('clipsApp.clip.home.title')" id="clip-heading">Clips</span>
       <div class="d-flex justify-content-end">
+        <button class="btn btn-info mr-2" v-on:click="takeScreenshot" :disabled="isFetching">
+          <span>TakeScreenshot</span>
+        </button>
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
           <span v-text="$t('clipsApp.clip.home.refreshListLabel')">Refresh List</span>
@@ -19,67 +22,34 @@
     <div class="alert alert-warning" v-if="!isFetching && clips && clips.length === 0">
       <span v-text="$t('clipsApp.clip.home.notFound')">No clips found</span>
     </div>
-    <div class="table-responsive" v-if="clips && clips.length > 0">
-      <table class="table table-striped" aria-describedby="clips">
-        <thead>
-          <tr>
-            <th scope="row"><span v-text="$t('global.field.id')">ID</span></th>
-            <th scope="row"><span v-text="$t('clipsApp.clip.name')">Name</span></th>
-            <th scope="row"><span v-text="$t('clipsApp.clip.content')">Content</span></th>
-            <th scope="row"><span v-text="$t('clipsApp.clip.positiveCount')">Positive Count</span></th>
-            <th scope="row"><span v-text="$t('clipsApp.clip.negativeCount')">Negative Count</span></th>
-            <th scope="row"><span v-text="$t('clipsApp.clip.creator')">Creator</span></th>
-            <th scope="row"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="clip in clips" :key="clip.id" data-cy="entityTable">
-            <td>
-              <router-link :to="{ name: 'ClipView', params: { clipId: clip.id } }">{{ clip.id }}</router-link>
-            </td>
-            <td>{{ clip.name }}</td>
-            <td>
-              <a v-if="clip.content" v-on:click="openFile(clip.contentContentType, clip.content)">
-                <img v-bind:src="'data:' + clip.contentContentType + ';base64,' + clip.content" style="max-height: 30px" alt="clip image" />
-              </a>
-              <span v-if="clip.content">{{ clip.contentContentType }}, {{ byteSize(clip.content) }}</span>
-            </td>
-            <td>{{ clip.positiveCount }}</td>
-            <td>{{ clip.negativeCount }}</td>
-            <td>
-              <div v-if="clip.creator">
-                <router-link :to="{ name: 'ClipUserView', params: { clipUserId: clip.creator.id } }">{{ clip.creator.id }}</router-link>
+    <div class="flex-container">
+      <template v-for="(clips, index) in clips">
+        <div class="card-container" :key="clips.id">
+          <router-link :to="{ name: 'ClipView', params: { clipId: clips.id } }" custom v-slot="{ navigate }">
+            <img
+              @click="navigate"
+              class="picture-item"
+              v-bind:src="'data:' + clips.contentContentType + ';base64,' + clips.content"
+              style="max-height: 210px"
+            />
+          </router-link>
+          <div class="card-footer-flex">
+            <div class="card-title-flex">{{ clips.name }}</div>
+            <div class="rating">
+              <div class="rating-up">
+                <button class="rating-item" v-on:click="rateUp(index)">up</button>
+                <div class="rate-up-number">{{ clips.positiveCount }}</div>
               </div>
-            </td>
-            <td class="text-right">
-              <div class="btn-group">
-                <router-link :to="{ name: 'ClipView', params: { clipId: clip.id } }" custom v-slot="{ navigate }">
-                  <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
-                    <font-awesome-icon icon="eye"></font-awesome-icon>
-                    <span class="d-none d-md-inline" v-text="$t('entity.action.view')">View</span>
-                  </button>
-                </router-link>
-                <router-link :to="{ name: 'ClipEdit', params: { clipId: clip.id } }" custom v-slot="{ navigate }">
-                  <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
-                    <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
-                    <span class="d-none d-md-inline" v-text="$t('entity.action.edit')">Edit</span>
-                  </button>
-                </router-link>
-                <b-button
-                  v-on:click="prepareRemove(clip)"
-                  variant="danger"
-                  class="btn btn-sm"
-                  data-cy="entityDeleteButton"
-                  v-b-modal.removeEntity
-                >
-                  <font-awesome-icon icon="times"></font-awesome-icon>
-                  <span class="d-none d-md-inline" v-text="$t('entity.action.delete')">Delete</span>
-                </b-button>
+
+              <div class="rating-down">
+                <button class="rating-down-item" v-on:click="rateDown(index)">down</button>
+                <div class="rate-down-number">{{ clips.negativeCount }}</div>
               </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </div>
+          </div>
+          <button class="delete-button" v-on:click="prepareRemove(clips)" data-cy="entityDeleteButton" v-b-modal.removeEntity>X</button>
+        </div>
+      </template>
     </div>
     <b-modal ref="removeEntity" id="removeEntity">
       <span slot="modal-title"

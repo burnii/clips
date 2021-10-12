@@ -56,6 +56,7 @@ export default class ClipUserUpdate extends Vue {
   public save(): void {
     this.isSaving = true;
     if (this.clipUser.id) {
+      console.log(this.clipUser);
       this.clipUserService()
         .update(this.clipUser)
         .then(param => {

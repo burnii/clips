@@ -2,6 +2,8 @@ package com.mycompany.myapp.web.rest;
 
 import com.mycompany.myapp.domain.Clip;
 import com.mycompany.myapp.repository.ClipRepository;
+import com.mycompany.myapp.repository.UserRepository;
+import com.mycompany.myapp.security.SecurityUtils;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -44,7 +46,9 @@ public class ClipResource {
      * {@code POST  /clips} : Create a new clip.
      *
      * @param clip the clip to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new clip, or with status {@code 400 (Bad Request)} if the clip has already an ID.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with
+     *         body the new clip, or with status {@code 400 (Bad Request)} if the
+     *         clip has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/clips")
@@ -53,6 +57,9 @@ public class ClipResource {
         if (clip.getId() != null) {
             throw new BadRequestAlertException("A new clip cannot already have an ID", ENTITY_NAME, "idexists");
         }
+
+        SecurityUtils.getCurrentUserLogin();
+
         Clip result = clipRepository.save(clip);
         return ResponseEntity
             .created(new URI("/api/clips/" + result.getId()))
@@ -63,11 +70,12 @@ public class ClipResource {
     /**
      * {@code PUT  /clips/:id} : Updates an existing clip.
      *
-     * @param id the id of the clip to save.
+     * @param id   the id of the clip to save.
      * @param clip the clip to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated clip,
-     * or with status {@code 400 (Bad Request)} if the clip is not valid,
-     * or with status {@code 500 (Internal Server Error)} if the clip couldn't be updated.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body
+     *         the updated clip, or with status {@code 400 (Bad Request)} if the
+     *         clip is not valid, or with status {@code 500 (Internal Server Error)}
+     *         if the clip couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/clips/{id}")
@@ -86,6 +94,7 @@ public class ClipResource {
         }
 
         Clip result = clipRepository.save(clip);
+
         return ResponseEntity
             .ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, clip.getId().toString()))
@@ -93,14 +102,16 @@ public class ClipResource {
     }
 
     /**
-     * {@code PATCH  /clips/:id} : Partial updates given fields of an existing clip, field will ignore if it is null
+     * {@code PATCH  /clips/:id} : Partial updates given fields of an existing clip,
+     * field will ignore if it is null
      *
-     * @param id the id of the clip to save.
+     * @param id   the id of the clip to save.
      * @param clip the clip to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated clip,
-     * or with status {@code 400 (Bad Request)} if the clip is not valid,
-     * or with status {@code 404 (Not Found)} if the clip is not found,
-     * or with status {@code 500 (Internal Server Error)} if the clip couldn't be updated.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body
+     *         the updated clip, or with status {@code 400 (Bad Request)} if the
+     *         clip is not valid, or with status {@code 404 (Not Found)} if the clip
+     *         is not found, or with status {@code 500 (Internal Server Error)} if
+     *         the clip couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PatchMapping(value = "/clips/{id}", consumes = { "application/json", "application/merge-patch+json" })
@@ -152,7 +163,8 @@ public class ClipResource {
     /**
      * {@code GET  /clips} : get all the clips.
      *
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of clips in body.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list
+     *         of clips in body.
      */
     @GetMapping("/clips")
     public List<Clip> getAllClips() {
@@ -164,7 +176,8 @@ public class ClipResource {
      * {@code GET  /clips/:id} : get the "id" clip.
      *
      * @param id the id of the clip to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the clip, or with status {@code 404 (Not Found)}.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body
+     *         the clip, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/clips/{id}")
     public ResponseEntity<Clip> getClip(@PathVariable Long id) {
