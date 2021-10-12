@@ -80,6 +80,21 @@ Drücken von Enter übersprungen, da dies nicht benötigt wird. Im Anschluss wir
 
 
 # deployment
+Um einen Deploy mit der App durchführen zu können, muss zunächst ein Test für das Production-Package durchgeführt werden. Dies wird mit Maven mit folgendem Befehl durchgeführt:
+
+./mvnew -Pprod
+
+Dies kompiliert, testet und verpackt die Anwendung mit allen Production-Settings. War der Test erfolgreich, kann die Applikation mit Docker deployed werden. Um ein Docker-Image zu erstellen und in die Docker-Registry mit aufzunehmen, kann folgender Befehl ausgeführt werden:
+
+./mvnw package -Pprod verify jib:dockerBuild
+
+Um das Image auszuführen, kann Docker Compose mit der erstellten Konfiguration ausgeführt werden. Diese befindet sich in src/main/docker. 
+
+docker-compose -f src/main/docker/app.yml up
+
+
+
+
 
 # fazit
 
