@@ -3,17 +3,24 @@
 # qucikstart
 
 # Was ist jhipster?
-Jhipster ist ein open source Anwendungsgenerator. Im backend kommt hierbei das Java Spring Framework zum Einsatz und im Frontend hat man die Wahl zwischen Angular, React und Vue. Es gibt viele weitere konfigurationsmöglichkeiten beispielsweise bezüglich Tests, der Security, verwendete Datenbank, generelle Struktur der Anwendung und vieles mehr.
+Jhipster ist ein Open Source Anwendungsgenerator. Im Backend kommt hierbei das Java Spring Framework zum Einsatz. Das Frontend kann entweder mit Angular, React oder Vue entwickelt werden. Dabei richtet man sich man sich stets nach den individuellen Know-How des Nutzers. Außerdem können noch viele weitere Konfigurationen durchgeführt werden. Darunter fallen unter anderem:
+
+* Tests
+* Security
+* Verwendete Datenbank
+* generelle Struktur der Anwendung
 
 # Projektarbeit
-In dieser Projektarbeit wird anhand eines einfachen Beispiels jhipster und einige der verfügbaren Konfigurationen getestet. Das Projekt selbst soll eine Art Galerie von Screenshots oder Clip aufnahmen ergeben. Diese Sollen bewertet und von anderen Benutzern eingesehen werden können. Im folgenden werden verschiedene Schritte beim Entwickeln der eben genannten Applikation etwas beschrieben. 
+Das Ziel dieser Projektarbeit ist das Testen von JHipster und einige der verfügbaren Konfigurationen anhand eines einfachen Beispiels. Dabei soll eine Anwendungen entwickelt werden, die Screenshots des Bildschirms aufnehmen kann und daraus eine Galerie erstellt. Die einzelnen Galerieelemente können von mehreren Usern eingesehen und bewertet werden. Die Bewertung erfolgt entweder durch einen Up-Vote oder durch einen Down-Vote. Im weiteren Verlauf der Dokumentation werden die verschiedenen Entwicklungsschritte der Applikation näher erläutert.
 
 # Konfiguration
 Zu Beginn kann mittels des Befehls "jhipster" in der Kommandozeile eine neue Applikation generiert werden. Darauf folgen einige Fragen bezüglich der Konfiguration der Applikation. Auf dem folgenden Bild kann die für diese Anwendung gewählte Konfiguration eingesehen werden. 
 ![altimage](./images/settings.png)
 
 # Entitäten generieren
-Um Entitäten zu generieren bietet jhipster zwei Möglichkeiten. Zum einen kann über das sogenannte "Jdlstudio" in einer Json ähnlichen Notation Entitäten und deren Relationen modelliert werden. Diese können importiert und exportiert werden. Das exportierte File kann durch "jhipster jdl my_file.jdl" importiert werden. 
+Um Entitäten zu generieren bietet JHipster zwei Möglichkeiten. Zum einen kann das sogenannte "Jdlstudio" verwendet werden. Es ermöglicht mit Hilfe einer JSON ähnlichen Notation Entitäten und deren Relationen zueinander zu modellieren. Diese Modellierung ist visuell als Graph einsehbar. Weiterhin ist das Importieren und Exportieren der Notationen möglich. Das exportierte File kann schließlich mit dem Befehl "jhipster jdl my_file.jdl" in das erstellte Projekt importiert werden.
+
+
 ![altimage](./images/jdlEntity.png)
 
 Die zweite Möglichkeit ist es die Entitäten über die Kommandozeile zu erstellen. Dies geschieht durch den Befehl "jhipster entity myEntity". Hier werden ähnlich wie bei der Konfiguration einige Fragen gestellt, wie die Entität generiert werden soll.
