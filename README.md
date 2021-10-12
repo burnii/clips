@@ -55,6 +55,24 @@ Die Tests wurden um einen Test erweitert, der sicherstellt, dass ein Benutzer nu
 # Mehrsprachigkeiten
 
 # continious integration
+Um eine CI zu integrieren kann folgender Befehl im Projektorder ausgeführt werden:
+
+jhipster ci-cd
+
+Anschließend folgt eine Abfrage, welche Pipeline verwendet werden soll. Folgende Möglichkeiten bieten sich:
+
+* Jenkins
+* Travis
+* GitLab CI
+* Azure Pipelines
+* GitHub Actions
+
+In diesem Projekt soll GitHub Actions verwendet werden und wird dementsprechend ausgewählt. Die darauf folgende Aufforderung eine Integration zu verwenden wird mit 
+Drücken von Enter übersprungen, da dies nicht benötigt wird. Im Anschluss wird im Projektordner ein yaml-Konfigurationsfile erstellt. Diese Änderungen werden anschließend gepushed, sodass Continuous Integration mit GitHub Actions verwendet werden kann. Folgende Abbildung zeigt das Ergebnis:
+
+
+
+
 
 # deployment
 
