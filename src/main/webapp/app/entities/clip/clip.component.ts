@@ -10,6 +10,7 @@ import ClipService from './clip.service';
 import AlertService from '@/shared/alert/alert.service';
 import UserManagementService from '@/admin/user-management/user-management.service';
 import { ClipUser } from '@/shared/model/clip-user.model';
+import ClipUserService from '../clip-user/clip-user.service';
 
 @Component({
   mixins: [Vue2Filters.mixin],
@@ -18,6 +19,7 @@ export default class Clip extends mixins(JhiDataUtils) {
   @Inject('clipService') private clipService: () => ClipService;
   @Inject('alertService') private alertService: () => AlertService;
   @Inject('userService') private userManagementService: () => UserManagementService;
+  @Inject('clipUserService') private clipUserService: () => ClipUserService;
 
   private removeId: number = null;
 
@@ -106,24 +108,43 @@ export default class Clip extends mixins(JhiDataUtils) {
     takeScreenshot2();
   }
 
-  rateUp(index: number) {
-    this.clips[index].positiveCount++;
+  updateClipAndUser(index: number, newPosCount: number, newNegCount: number) {
     this.userManagementService()
       .getCurrentUser()
       .then(res => {
-        if (this.clips[index].ratedUsers == null) {
-          this.clips[index].ratedUsers = [];
-        }
-
-        this.clips[index].ratedUsers.push(new ClipUser());
+        console.log('_____________');
+        console.log(res);
         console.log(this.clips[index]);
-        this.clipService().update(this.clips[index]);
+
+        this.clipUserService()
+          .find(res.data.id)
+          .then(res => {
+            if (res.ratedClips == null) {
+              res.ratedClips = [];
+            }
+
+            if (!res.ratedClips.some(x => x.id == this.clips[index].id)) {
+              res.ratedClips.push(this.clips[index]);
+              this.clipUserService().update(res);
+
+              this.clips[index].positiveCount = newPosCount;
+              this.clips[index].negativeCount = newNegCount;
+              this.clipService().update(this.clips[index]);
+            }
+          });
       });
   }
 
+  rateUp(index: number) {
+    const newPositiveCount = this.clips[index].positiveCount + 1;
+    const newNegativeCount = this.clips[index].negativeCount;
+    this.updateClipAndUser(index, newPositiveCount, newNegativeCount);
+  }
+
   rateDown(index: number) {
-    this.clips[index].negativeCount++;
-    this.clipService().update(this.clips[index]);
+    const newPositiveCount = this.clips[index].positiveCount;
+    const newNegativeCount = this.clips[index].negativeCount + 1;
+    this.updateClipAndUser(index, newPositiveCount, newNegativeCount);
   }
 
   public removeClip(): void {

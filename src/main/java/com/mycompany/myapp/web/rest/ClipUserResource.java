@@ -42,7 +42,9 @@ public class ClipUserResource {
      * {@code POST  /clip-users} : Create a new clipUser.
      *
      * @param clipUser the clipUser to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new clipUser, or with status {@code 400 (Bad Request)} if the clipUser has already an ID.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with
+     *         body the new clipUser, or with status {@code 400 (Bad Request)} if
+     *         the clipUser has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/clip-users")
@@ -61,11 +63,13 @@ public class ClipUserResource {
     /**
      * {@code PUT  /clip-users/:id} : Updates an existing clipUser.
      *
-     * @param id the id of the clipUser to save.
+     * @param id       the id of the clipUser to save.
      * @param clipUser the clipUser to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated clipUser,
-     * or with status {@code 400 (Bad Request)} if the clipUser is not valid,
-     * or with status {@code 500 (Internal Server Error)} if the clipUser couldn't be updated.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body
+     *         the updated clipUser, or with status {@code 400 (Bad Request)} if the
+     *         clipUser is not valid, or with status
+     *         {@code 500 (Internal Server Error)} if the clipUser couldn't be
+     *         updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/clip-users/{id}")
@@ -93,14 +97,17 @@ public class ClipUserResource {
     }
 
     /**
-     * {@code PATCH  /clip-users/:id} : Partial updates given fields of an existing clipUser, field will ignore if it is null
+     * {@code PATCH  /clip-users/:id} : Partial updates given fields of an existing
+     * clipUser, field will ignore if it is null
      *
-     * @param id the id of the clipUser to save.
+     * @param id       the id of the clipUser to save.
      * @param clipUser the clipUser to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated clipUser,
-     * or with status {@code 400 (Bad Request)} if the clipUser is not valid,
-     * or with status {@code 404 (Not Found)} if the clipUser is not found,
-     * or with status {@code 500 (Internal Server Error)} if the clipUser couldn't be updated.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body
+     *         the updated clipUser, or with status {@code 400 (Bad Request)} if the
+     *         clipUser is not valid, or with status {@code 404 (Not Found)} if the
+     *         clipUser is not found, or with status
+     *         {@code 500 (Internal Server Error)} if the clipUser couldn't be
+     *         updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PatchMapping(value = "/clip-users/{id}", consumes = { "application/json", "application/merge-patch+json" })
@@ -136,8 +143,10 @@ public class ClipUserResource {
     /**
      * {@code GET  /clip-users} : get all the clipUsers.
      *
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of clipUsers in body.
+     * @param eagerload flag to eager load entities from relationships (This is
+     *                  applicable for many-to-many).
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list
+     *         of clipUsers in body.
      */
     @GetMapping("/clip-users")
     public List<ClipUser> getAllClipUsers(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
@@ -149,7 +158,8 @@ public class ClipUserResource {
      * {@code GET  /clip-users/:id} : get the "id" clipUser.
      *
      * @param id the id of the clipUser to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the clipUser, or with status {@code 404 (Not Found)}.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body
+     *         the clipUser, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/clip-users/{id}")
     public ResponseEntity<ClipUser> getClipUser(@PathVariable Long id) {
