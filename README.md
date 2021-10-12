@@ -1,6 +1,6 @@
 # clips
 
-# qucikstart
+# Quickstart
 
 # Was ist jhipster?
 Jhipster ist ein Open Source Anwendungsgenerator. Im Backend kommt hierbei das Java Spring Framework zum Einsatz. Das Frontend kann entweder mit Angular, React oder Vue entwickelt werden. Dabei richtet man sich man sich stets nach den individuellen Know-How des Nutzers. Außerdem können noch viele weitere Konfigurationen durchgeführt werden. Darunter fallen unter anderem:
@@ -19,33 +19,31 @@ Zu Beginn kann mittels des Befehls "jhipster" in der Kommandozeile eine neue App
 
 # Entitäten generieren
 Um Entitäten zu generieren bietet JHipster zwei Möglichkeiten. Zum einen kann das sogenannte "Jdlstudio" verwendet werden. Es ermöglicht mit Hilfe einer JSON ähnlichen Notation Entitäten und deren Relationen zueinander zu modellieren. Diese Modellierung ist visuell als Graph einsehbar. Weiterhin ist das Importieren und Exportieren der Notationen möglich. Das exportierte File kann schließlich mit dem Befehl "jhipster jdl my_file.jdl" in das erstellte Projekt importiert werden.
+![Entitäten](./images/EntitätenGenerieren.png)
 
+Die zweite Möglichkeit ist es, die Entitäten über die Kommandozeile zu erstellen. Dies geschieht durch den Befehl "jhipster entity myEntity". Hier werden ähnlich wie bei der Konfiguration während der JHipster Projekterstellung einige Fragen gestellt, wie die Entität generiert werden soll.
 
-![altimage](./images/jdlEntity.png)
-
-Die zweite Möglichkeit ist es die Entitäten über die Kommandozeile zu erstellen. Dies geschieht durch den Befehl "jhipster entity myEntity". Hier werden ähnlich wie bei der Konfiguration einige Fragen gestellt, wie die Entität generiert werden soll.
-![altimage](./image/powerShellCreateEntity.png)
-
-Bei beiden Möglichkeiten werden die Entitäten komplett erstellt. Es werden Tabellen in der Datenbank angelegt, Services im Backend registriert die CRUD Operationen für die Entitäten ermöglichen und die Entitäten können mit Beispieldaten versehen im Frontend in Tabellenform angezeigt werden.
+Bei beiden Möglichkeiten werden die Entitäten komplett erstellt. Es werden Tabellen in der Datenbank angelegt, Services im Backend registriert, die CRUD Operationen für die Entitäten ermöglichen und die Entitäten können mit Beispieldaten versehen und im Frontend in Tabellenform angezeigt werden.
 
 ## Besonderheiten
 ### User Entität
-Standardmäßig werden schon zwei Benutzer automatisch angelegt. Ein User und ein Admin. Somit muss schon eine User Entität existieren die aber speziell behandelt wird. Jhipster gibt drei Möglichkeiten an, um User Entitäten anzupassen.
+Standardmäßig werden zwei Benutzer automatisch angelegt. Ein User und ein Admin. Somit muss eine User Entität existieren, die aber speziell behandelt wird. Jhipster gibt drei Möglichkeiten an, um User Entitäten anzupassen.
 
-1. 1 zu 1 Beziehung auf die bestehende User Entity um diese zu erweitern.
-2. Vererbung
-3. User Entity manuell anlegen
+* 1 zu 1 Beziehung auf die bestehende User Entity, um diese zu erweitern.
+* Vererbung
+* User Entity manuell anlegen
 
-Von jhipster wird die erste Möglichkeit empfohlen und deswegen wurde diese auch in dieser Applikation verwendet. Mehr zu User Entitäten kann hier nachgelesen werden: https://www.jhipster.tech/user-entity/
+JHipster empfiehlt die erste Möglichkeit. Aus diesem Grund wird die 1 zu 1 Beziehung auf die bestehende User Entity in diesem Projekt angewendet. Mehr zu User Entitäten kann hier nachgelesen werden: https://www.jhipster.tech/user-entity/
 
 ### Bearbeiten von Entitäten
-Nimmt man Veränderungen an beispielsweise der Standard generierten Anzeige der Entität vor und muss nachträglich etwas an den generierten Entitäten ändern, werden bei der wiederholten Generierung alle Änderungen überschrieben. Am besten sollten im vorhinein die Entitäten direkt richtig erstellt werden. 
+Werden an den standardmäßig generierten Anzeige der Entitäten und an den Entitäten selbst nächträglich Veränderungen vorgenommen, werden bei der wiederholten Generierung alle Änderungen überschrieben. Deshalb sollte schon von Beginn an sicher gestellt werden, wie die Entitäten modelliert werden sollen.
 
 # Frontend Anpassungen
-Im Frontend wird die Anzeige der Entitäten überarbeitet. Anstatt einer Tabellenform sollen die Bilder nebeneinander in Kachelform mit Namen und up bzw. downvote Möglichkeiten angezeigt werden. Hier ein Vorher und nachher Vergleich der beiden Ansichten:
-![altimage](./image/uiOld.png)
-![altimage](./image/uiNew.png)
-Zusätzlich existiert ein Button, der die Aufnahme eines Screenshots ermöglicht und Automatisch das Bild dem aktuellen Benutzer hinzufügt.
+Im Frontend wird die Anzeige der Entitäten überarbeitet. Anstatt einer Tabellenform sollen die Bilder nebeneinander in Kachelform mit Namen und Up- bzw. Down-Vote Möglichkeiten angezeigt werden. Hier ein Vorher und nachher Vergleich der beiden Ansichten:
+![uiOld](./images/uiOld.png)
+![uiNew](./images/frontendNeu.png)
+
+Zusätzlich wird ein Button hinzugefügt, über den ein Screenshot des Bildschirms aufgenommen werden kann. Sind mehrere Bildschirme vorhanden, ist eine Auswahl möglich. Das aufgenommene Bild wird dem aktuellen Nutzer hinzugefügt und in der Kachelansicht dargestellt.
 
 # Backend Anpassungen
 Im Backend muss zur Erstellung von Clips eine validierung eingeführt werden, die sicherstellt, dass ein Benutzer ein Bild nicht mehrmals bewerten kann.
@@ -55,7 +53,7 @@ Außerdem sollen erstellte Clips automatisch den aktuellen Benutzer hinzugefügt
 // Codeausschnitt
 
 # Tests
-Standardmäßig verwendet jhipster JUnit (Unit tests) und Jest (UI). Die Tests können durch "./mvnw clean verify" und "npm test" ausgeführt werden.
+Standardmäßig verwendet JHipster JUnit (Unit tests) und Jest (UI). Die Tests können durch "./mvnw clean verify" und "npm test" ausgeführt werden.
 Die Tests wurden um einen Test erweitert, der sicherstellt, dass ein Benutzer nur einmal ein clip bewerten kann.
 //Codeausschnitt
 
