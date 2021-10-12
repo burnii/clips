@@ -1,5 +1,70 @@
 # clips
 
+# qucikstart
+
+# Was ist jhipster?
+Jhipster ist ein open source Anwendungsgenerator. Im backend kommt hierbei das Java Spring Framework zum Einsatz und im Frontend hat man die Wahl zwischen Angular, React und Vue. Es gibt viele weitere konfigurationsmöglichkeiten beispielsweise bezüglich Tests, der Security, verwendete Datenbank, generelle Struktur der Anwendung und vieles mehr.
+
+# Projektarbeit
+In dieser Projektarbeit wird anhand eines einfachen Beispiels jhipster und einige der verfügbaren Konfigurationen getestet. Das Projekt selbst soll eine Art Galerie von Screenshots oder Clip aufnahmen ergeben. Diese Sollen bewertet und von anderen Benutzern eingesehen werden können. Im folgenden werden verschiedene Schritte beim Entwickeln der eben genannten Applikation etwas beschrieben. 
+
+# Konfiguration
+Zu Beginn kann mittels des Befehls "jhipster" in der Kommandozeile eine neue Applikation generiert werden. Darauf folgen einige Fragen bezüglich der Konfiguration der Applikation. Auf dem folgenden Bild kann die für diese Anwendung gewählte Konfiguration eingesehen werden. 
+![altimage](./images/settings.png)
+
+# Entitäten generieren
+Um Entitäten zu generieren bietet jhipster zwei Möglichkeiten. Zum einen kann über das sogenannte "Jdlstudio" in einer Json ähnlichen Notation Entitäten und deren Relationen modelliert werden. Diese können importiert und exportiert werden. Das exportierte File kann durch "jhipster jdl my_file.jdl" importiert werden. 
+![altimage](./images/jdlEntity.png)
+
+Die zweite Möglichkeit ist es die Entitäten über die Kommandozeile zu erstellen. Dies geschieht durch den Befehl "jhipster entity myEntity". Hier werden ähnlich wie bei der Konfiguration einige Fragen gestellt, wie die Entität generiert werden soll.
+![altimage](./image/powerShellCreateEntity.png)
+
+Bei beiden Möglichkeiten werden die Entitäten komplett erstellt. Es werden Tabellen in der Datenbank angelegt, Services im Backend registriert die CRUD Operationen für die Entitäten ermöglichen und die Entitäten können mit Beispieldaten versehen im Frontend in Tabellenform angezeigt werden.
+
+## Besonderheiten
+### User Entität
+Standardmäßig werden schon zwei Benutzer automatisch angelegt. Ein User und ein Admin. Somit muss schon eine User Entität existieren die aber speziell behandelt wird. Jhipster gibt drei Möglichkeiten an, um User Entitäten anzupassen.
+
+1. 1 zu 1 Beziehung auf die bestehende User Entity um diese zu erweitern.
+2. Vererbung
+3. User Entity manuell anlegen
+
+Von jhipster wird die erste Möglichkeit empfohlen und deswegen wurde diese auch in dieser Applikation verwendet. Mehr zu User Entitäten kann hier nachgelesen werden: https://www.jhipster.tech/user-entity/
+
+### Bearbeiten von Entitäten
+Nimmt man Veränderungen an beispielsweise der Standard generierten Anzeige der Entität vor und muss nachträglich etwas an den generierten Entitäten ändern, werden bei der wiederholten Generierung alle Änderungen überschrieben. Am besten sollten im vorhinein die Entitäten direkt richtig erstellt werden. 
+
+# Frontend Anpassungen
+Im Frontend wird die Anzeige der Entitäten überarbeitet. Anstatt einer Tabellenform sollen die Bilder nebeneinander in Kachelform mit Namen und up bzw. downvote Möglichkeiten angezeigt werden. Hier ein Vorher und nachher Vergleich der beiden Ansichten:
+![altimage](./image/uiOld.png)
+![altimage](./image/uiNew.png)
+Zusätzlich existiert ein Button, der die Aufnahme eines Screenshots ermöglicht und Automatisch das Bild dem aktuellen Benutzer hinzufügt.
+
+# Backend Anpassungen
+Im Backend muss zur Erstellung von Clips eine validierung eingeführt werden, die sicherstellt, dass ein Benutzer ein Bild nicht mehrmals bewerten kann.
+// Codeausschnitt
+
+Außerdem sollen erstellte Clips automatisch den aktuellen Benutzer hinzugefügt werden.
+// Codeausschnitt
+
+# Tests
+Standardmäßig verwendet jhipster JUnit (Unit tests) und Jest (UI). Die Tests können durch "./mvnw clean verify" und "npm test" ausgeführt werden.
+Die Tests wurden um einen Test erweitert, der sicherstellt, dass ein Benutzer nur einmal ein clip bewerten kann.
+//Codeausschnitt
+
+# Mehrsprachigkeiten
+
+# continious integration
+
+# deployment
+
+# neue routes hinzufügen
+
+# fazit
+
+
+# AUTO GENERATED DOCUMENTATION
+
 This application was generated using JHipster 7.3.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v7.3.0](https://www.jhipster.tech/documentation-archive/v7.3.0).
 
 ## Development
