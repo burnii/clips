@@ -1,0 +1,26 @@
+{
+  "clipsApp": {
+    "clipUser": {
+      "home": {
+        "title": "Clip Users",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Clip User erstellen",
+        "createOrEditLabel": "Clip User erstellen oder bearbeiten",
+        "notFound": "Keine Clip Users gefunden"
+      },
+      "created": "Clip User erstellt mit ID {{ param }}",
+      "updated": "Clip User aktualisiert mit ID {{ param }}",
+      "deleted": "Clip User gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Clip User {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Clip User"
+      },
+      "id": "ID",
+      "internalUser": "Internal User",
+      "clip": "Clip",
+      "ratedClips": "Rated Clips"
+    }
+  }
+}

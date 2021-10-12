@@ -42,6 +42,8 @@
     "clientPackageManager": "npm",
     "clientThemeVariant": "",
     "languages": ["en", "de"],
-    "enableGradleEnterprise": false
+    "enableGradleEnterprise": false,
+    "entities": ["Clip", "ClipUser"],
+    "lastLiquibaseTimestamp": 1634055916000
   }
 }

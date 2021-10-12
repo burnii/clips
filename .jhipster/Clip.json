@@ -1,0 +1,49 @@
+{
+  "name": "Clip",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "content",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "positiveCount",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "negativeCount",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "clipUser",
+      "otherEntityRelationshipName": "clip",
+      "relationshipName": "creator"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "clipUser",
+      "otherEntityRelationshipName": "ratedClips",
+      "relationshipName": "ratedUsers",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "clip",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211012162515"
+}

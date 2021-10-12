@@ -1,0 +1,24 @@
+entity Clip {
+	name String required
+	content ImageBlob required
+    positiveCount Integer
+    negativeCount Integer
+}
+
+entity ClipUser {
+}
+
+relationship OneToOne {
+  ClipUser{internalUser} to User
+}
+
+relationship ManyToMany {
+	ClipUser{ratedClips} to Clip{ratedUsers}
+}
+
+relationship OneToMany {
+	ClipUser to Clip{creator}
+}
+
+
+    

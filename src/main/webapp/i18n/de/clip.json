@@ -1,0 +1,29 @@
+{
+  "clipsApp": {
+    "clip": {
+      "home": {
+        "title": "Clips",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Clip erstellen",
+        "createOrEditLabel": "Clip erstellen oder bearbeiten",
+        "notFound": "Keine Clips gefunden"
+      },
+      "created": "Clip erstellt mit ID {{ param }}",
+      "updated": "Clip aktualisiert mit ID {{ param }}",
+      "deleted": "Clip gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Clip {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Clip"
+      },
+      "id": "ID",
+      "name": "Name",
+      "content": "Content",
+      "positiveCount": "Positive Count",
+      "negativeCount": "Negative Count",
+      "creator": "Creator",
+      "ratedUsers": "Rated Users"
+    }
+  }
+}

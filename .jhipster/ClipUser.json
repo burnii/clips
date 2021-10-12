@@ -1,0 +1,36 @@
+{
+  "name": "ClipUser",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "clipUser",
+      "relationshipName": "internalUser",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "clip",
+      "otherEntityRelationshipName": "creator",
+      "relationshipName": "clip"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "clip",
+      "otherEntityRelationshipName": "ratedUsers",
+      "relationshipName": "ratedClips",
+      "ownerSide": true
+    }
+  ],
+  "entityTableName": "clip_user",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211012162516"
+}

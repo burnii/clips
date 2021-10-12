@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+    <!--
+        Added the constraints for entity ClipUser.
+    -->
+    <changeSet id="20211012162516-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="internal_user_id"
+                                 baseTableName="clip_user"
+                                 constraintName="fk_clip_user__internal_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="clip_user_id"
+                                 baseTableName="rel_clip_user__rated_clips"
+                                 constraintName="fk_rel_clip_user__rated_clips__clip_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="clip_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="rated_clips_id"
+                                 baseTableName="rel_clip_user__rated_clips"
+                                 constraintName="fk_rel_clip_user__rated_clips__rated_clips_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="clip"/>
+    </changeSet>
+</databaseChangeLog>
