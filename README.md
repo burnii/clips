@@ -87,7 +87,7 @@ Um das Image auszuführen, kann Docker Compose mit der erstellten Konfiguration 
 docker-compose -f src/main/docker/app.yml up
 
 # Fazit
-Abschließend lässt sich sagen, dass Jhipster ein mächtiges Tool ist, um schnell einen ersten Stand einer Anwendung zu entwickeln. Es bietet viele Konfigurationsmöglichkeiten um die verwendeten Technologien auf jeden Anwendungsfall abstimmen zu können. Zusätzlich werden viele Hilfestellungne bereitgestellt, um den Einstieg in die Webentwicklung weiter zu vereinfachen. Außerdem lassen sie die Generatoren anpassen, wodurch der Generierte Code wirklich an jedem Anwendungsfall angepasst werden kann. Noch während dieser Projektarbeit konnte ich mehrmals die Jhipster Version upgrade, was zeigt, dass weiterhin stark daran weiterentwickelt wird und es bleibt spannend welche Features Jhipster in Zukunft noch unterstützen wird.
+Abschließend lässt sich sagen, dass Jhipster ein mächtiges Tool ist, um schnell einen ersten Stand einer Anwendung zu entwickeln. Es bietet viele Konfigurationsmöglichkeiten um die verwendeten Technologien auf jeden Anwendungsfall abstimmen zu können. Zusätzlich werden viele Hilfestellungne bereitgestellt, um den Einstieg in die Webentwicklung weiter zu vereinfachen. Außerdem lassen sie die Generatoren anpassen, wodurch der Generierte Code wirklich an jedem Anwendungsfall angepasst werden kann. Noch während dieser Projektarbeit haben mehrere Jhipster Releases stattgefunden, was zeigt, dass weiterhin stark weiterentwickelt wird und es bleibt spannend welche Features Jhipster in Zukunft noch unterstützen wird.
 
 # AUTO GENERATED DOCUMENTATION
 
