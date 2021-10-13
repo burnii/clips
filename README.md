@@ -51,8 +51,6 @@ Im Backend mussten folgenden Anpassungen vorgenommen werden:
     - Validierung der Bewertungen (nur ein mal pro Benutzer)
     - Automatisches ergänzen des Erstellers
 
-# Mehrsprachigkeiten
-
 # Tests
 Standardmäßig verwendet JHipster JUnit (Unit tests) und Jest (UI). Die Tests können durch "./mvnw clean verify" und "npm test" ausgeführt werden. Beim Generieren der Applikation hat man die Möglichkeit weitere Testframeworks zu verwenden. In diesem Projekt wurde sich jedoch auf die standard Frameworks beschränkt. Nach dem Generieren der Applikation wurde schon diverse Frontend und Backend Tests implementiert.
 
@@ -73,7 +71,7 @@ In diesem Projekt soll GitHub Actions verwendet werden und wird dementsprechend 
 
 ![CI GitHub Actions](./images/CI.PNG)
 
-# deployment
+# Deployment
 Um ein Prod build mit Maven zu testen muss folgender Befehl ausgeführt werden:
 
 ./mvnew -Pprod
@@ -87,7 +85,7 @@ Um das Image auszuführen, kann Docker Compose mit der erstellten Konfiguration 
 docker-compose -f src/main/docker/app.yml up
 
 # Fazit
-Abschließend lässt sich sagen, dass Jhipster ein mächtiges Tool ist, um schnell einen ersten Stand einer Anwendung zu entwickeln. Es bietet viele Konfigurationsmöglichkeiten um die verwendeten Technologien auf jeden Anwendungsfall abstimmen zu können. Zusätzlich werden viele Hilfestellungne bereitgestellt, um den Einstieg in die Webentwicklung weiter zu vereinfachen. Außerdem lassen sie die Generatoren anpassen, wodurch der Generierte Code wirklich an jedem Anwendungsfall angepasst werden kann. Noch während dieser Projektarbeit haben mehrere Jhipster Releases stattgefunden, was zeigt, dass weiterhin stark weiterentwickelt wird und es bleibt spannend welche Features Jhipster in Zukunft noch unterstützen wird.
+Abschließend lässt sich sagen, dass Jhipster ein mächtiges Tool ist, um schnell einen ersten Stand einer Anwendung zu entwickeln. Es bietet viele Konfigurationsmöglichkeiten um die verwendeten Technologien auf jeden Anwendungsfall abstimmen zu können. Zusätzlich werden viele Hilfestellungen bereitgestellt, um den Einstieg in die Webentwicklung weiter zu vereinfachen. Außerdem lassen sie die Generatoren anpassen, wodurch der Generierte Code wirklich an jedem Anwendungsfall angepasst werden kann. Noch während dieser Projektarbeit haben mehrere Jhipster Releases stattgefunden, was zeigt, dass weiterhin stark weiterentwickelt wird und es bleibt spannend welche Features Jhipster in Zukunft noch unterstützen wird.
 
 # AUTO GENERATED DOCUMENTATION
 
