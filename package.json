@@ -102,6 +102,7 @@
     "@types/node": "16.10.3",
     "@types/sinon": "10.0.4",
     "@types/vuelidate": "0.7.15",
+    "@types/w3c-image-capture": "^1.0.5",
     "@typescript-eslint/eslint-plugin": "4.33.0",
     "@typescript-eslint/parser": "4.33.0",
     "@vue/cli-plugin-eslint": "4.5.13",

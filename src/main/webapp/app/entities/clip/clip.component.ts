@@ -25,6 +25,7 @@ export default class Clip extends mixins(JhiDataUtils) {
 
   public clips: IClip[] = [];
   public clipUsers: IClipUser[] = [];
+  public allClips: IClip[] = [];
 
   public isFetching = false;
 
@@ -43,9 +44,8 @@ export default class Clip extends mixins(JhiDataUtils) {
       .retrieve()
       .then(
         res => {
-          console.log('asd');
-          console.log(res);
           this.clips = res.data;
+          this.allClips = res.data;
           this.isFetching = false;
         },
         err => {
@@ -56,10 +56,8 @@ export default class Clip extends mixins(JhiDataUtils) {
   }
 
   public getSelectedClipUser(e) {
-    console.log(e.target.value);
-    console.log(this.clips);
     if (e.target.value != '') {
-      this.clips = this.clips.filter(x => x.creator != null && x.creator.id == e.target.value.split(':')[0]);
+      this.clips = this.allClips.filter(x => x.creator != null && x.creator.id == e.target.value.split(':')[0]);
     } else {
       this.retrieveAllClips();
     }
@@ -125,10 +123,6 @@ export default class Clip extends mixins(JhiDataUtils) {
     this.userManagementService()
       .getCurrentUser()
       .then(res => {
-        console.log('_____________');
-        console.log(res);
-        console.log(this.clips[index]);
-
         this.clipUserService()
           .find(res.data.id)
           .then(res => {
