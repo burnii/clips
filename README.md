@@ -1,7 +1,5 @@
 # clips
 
-# Quickstart
-
 # Was ist jhipster?
 Jhipster ist ein Open Source Anwendungsgenerator. Im Backend kommt hierbei das Java Spring Framework zum Einsatz. Das Frontend kann entweder mit Angular, React oder Vue entwickelt werden. Außerdem können noch viele weitere Konfigurationen durchgeführt werden. Darunter fallen unter anderem:
 
