@@ -7,6 +7,7 @@ import ClipComponent from '@/entities/clip/clip.vue';
 import ClipClass from '@/entities/clip/clip.component';
 import ClipService from '@/entities/clip/clip.service';
 import AlertService from '@/shared/alert/alert.service';
+import ClipUserService from '@/entities/clip-user/clip-user.service';
 
 const localVue = createLocalVue();
 
@@ -32,10 +33,14 @@ describe('Component Tests', () => {
     let wrapper: Wrapper<ClipClass>;
     let comp: ClipClass;
     let clipServiceStub: SinonStubbedInstance<ClipService>;
+    let clipUserServiceStub: SinonStubbedInstance<ClipUserService>;
 
     beforeEach(() => {
       clipServiceStub = sinon.createStubInstance<ClipService>(ClipService);
       clipServiceStub.retrieve.resolves({ headers: {} });
+
+      clipUserServiceStub = sinon.createStubInstance<ClipUserService>(ClipUserService);
+      clipUserServiceStub.retrieve.resolves({ headers: {} });
 
       wrapper = shallowMount<ClipClass>(ClipComponent, {
         store,
@@ -44,6 +49,7 @@ describe('Component Tests', () => {
         stubs: { bModal: bModalStub as any },
         provide: {
           clipService: () => clipServiceStub,
+          clipUserService: () => clipUserServiceStub,
           alertService: () => new AlertService(),
         },
       });
