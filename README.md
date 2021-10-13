@@ -13,10 +13,12 @@ Das Ziel dieser Projektarbeit ist das Testen von JHipster und einige der verfüg
 
 # Konfiguration
 Zu Beginn kann mittels des Befehls "jhipster" in der Kommandozeile eine neue Applikation generiert werden. Darauf folgen einige Fragen bezüglich der Konfiguration der Applikation. Auf dem folgenden Bild kann die für diese Anwendung gewählte Konfiguration eingesehen werden. 
+
 ![altimage](./images/settings.png)
 
 # Entitäten generieren
 Um Entitäten zu generieren bietet JHipster zwei Möglichkeiten. Zum einen kann das sogenannte "Jdlstudio" verwendet werden. Es ermöglicht mit Hilfe einer JSON ähnlichen Notation Entitäten und deren Relationen zueinander zu modellieren. Diese Modellierung ist visuell als Graph einsehbar. Weiterhin ist das Importieren und Exportieren der Notationen möglich. Das exportierte File kann schließlich mit dem Befehl "jhipster jdl my_file.jdl" in das erstellte Projekt importiert werden.
+
 ![Entitäten](./images/EntitätenGenerieren.png)
 
 Die zweite Möglichkeit ist es, die Entitäten über die Kommandozeile zu erstellen. Dies geschieht durch den Befehl "jhipster entity myEntity". Hier werden ähnlich wie bei der Konfiguration während der JHipster Projekterstellung einige Fragen gestellt, wie die Entität generiert werden soll.
