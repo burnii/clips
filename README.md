@@ -3,7 +3,7 @@
 # Quickstart
 
 # Was ist jhipster?
-Jhipster ist ein Open Source Anwendungsgenerator. Im Backend kommt hierbei das Java Spring Framework zum Einsatz. Das Frontend kann entweder mit Angular, React oder Vue entwickelt werden. Dabei richtet man sich man sich stets nach den individuellen Know-How des Nutzers. Außerdem können noch viele weitere Konfigurationen durchgeführt werden. Darunter fallen unter anderem:
+Jhipster ist ein Open Source Anwendungsgenerator. Im Backend kommt hierbei das Java Spring Framework zum Einsatz. Das Frontend kann entweder mit Angular, React oder Vue entwickelt werden. Außerdem können noch viele weitere Konfigurationen durchgeführt werden. Darunter fallen unter anderem:
 
 * Tests
 * Security
@@ -11,7 +11,7 @@ Jhipster ist ein Open Source Anwendungsgenerator. Im Backend kommt hierbei das J
 * generelle Struktur der Anwendung
 
 # Projektarbeit
-Das Ziel dieser Projektarbeit ist das Testen von JHipster und einige der verfügbaren Konfigurationen anhand eines einfachen Beispiels. Dabei soll eine Anwendungen entwickelt werden, die Screenshots des Bildschirms aufnehmen kann und daraus eine Galerie erstellt. Die einzelnen Galerieelemente können von mehreren Usern eingesehen und bewertet werden. Die Bewertung erfolgt entweder durch einen Up-Vote oder durch einen Down-Vote. Im weiteren Verlauf der Dokumentation werden die verschiedenen Entwicklungsschritte der Applikation näher erläutert.
+Das Ziel dieser Projektarbeit ist das Testen von JHipster und einige der verfügbaren Konfigurationen anhand eines einfachen Beispiels. Dabei soll eine Anwendungen entwickelt werden, die Screenshots des Bildschirms aufnehmen kann und daraus eine Galerie erstellt. Die einzelnen Galerieelemente können von mehreren Usern eingesehen und bewertet werden. Die Bewertung erfolgt entweder durch einen Up-Vote oder durch einen Down-Vote. Im weiteren Verlauf der Dokumentation werden die verschiedenen Entwicklungsschritte der Applikation näher erläutert und es wird darauf eingegangen, wie Jhipster das Ganze unterstützt.
 
 # Konfiguration
 Zu Beginn kann mittels des Befehls "jhipster" in der Kommandozeile eine neue Applikation generiert werden. Darauf folgen einige Fragen bezüglich der Konfiguration der Applikation. Auf dem folgenden Bild kann die für diese Anwendung gewählte Konfiguration eingesehen werden. 
@@ -23,7 +23,7 @@ Um Entitäten zu generieren bietet JHipster zwei Möglichkeiten. Zum einen kann 
 
 Die zweite Möglichkeit ist es, die Entitäten über die Kommandozeile zu erstellen. Dies geschieht durch den Befehl "jhipster entity myEntity". Hier werden ähnlich wie bei der Konfiguration während der JHipster Projekterstellung einige Fragen gestellt, wie die Entität generiert werden soll.
 
-Bei beiden Möglichkeiten werden die Entitäten komplett erstellt. Es werden Tabellen in der Datenbank angelegt, Services im Backend registriert, die CRUD Operationen für die Entitäten ermöglichen und die Entitäten können mit Beispieldaten versehen und im Frontend in Tabellenform angezeigt werden.
+Bei beiden Möglichkeiten werden die Entitäten komplett erstellt. Es werden Tabellen in der Datenbank angelegt, Services im Backend registriert, die CRUD Operationen für die Entitäten ermöglichen und die Entitäten können mit Beispieldaten versehen, im Frontend in Tabellenform angezeigt werden.
 
 ## Besonderheiten
 ### User Entität
@@ -46,20 +46,17 @@ Im Frontend wird die Anzeige der Entitäten überarbeitet. Anstatt einer Tabelle
 Zusätzlich wird ein Button hinzugefügt, über den ein Screenshot des Bildschirms aufgenommen werden kann. Sind mehrere Bildschirme vorhanden, ist eine Auswahl möglich. Das aufgenommene Bild wird dem aktuellen Nutzer hinzugefügt und in der Kachelansicht dargestellt.
 
 # Backend Anpassungen
-Im Backend muss zur Erstellung von Clips eine validierung eingeführt werden, die sicherstellt, dass ein Benutzer ein Bild nicht mehrmals bewerten kann.
-// Codeausschnitt
-
-Außerdem sollen erstellte Clips automatisch den aktuellen Benutzer hinzugefügt werden.
-// Codeausschnitt
-
-# Tests
-Standardmäßig verwendet JHipster JUnit (Unit tests) und Jest (UI). Die Tests können durch "./mvnw clean verify" und "npm test" ausgeführt werden.
-Die Tests wurden um einen Test erweitert, der sicherstellt, dass ein Benutzer nur einmal ein clip bewerten kann.
-//Codeausschnitt
+Im Backend mussten folgenden Anpassungen vorgenommen werden:
+    - API Erweiterungen
+    - Validierung der Bewertungen (nur ein mal pro Benutzer)
+    - Automatisches ergänzen des Erstellers
 
 # Mehrsprachigkeiten
 
-# continious integration
+# Tests
+Standardmäßig verwendet JHipster JUnit (Unit tests) und Jest (UI). Die Tests können durch "./mvnw clean verify" und "npm test" ausgeführt werden. Beim Generieren der Applikation hat man die Möglichkeit weitere Testframeworks zu verwenden. In diesem Projekt wurde sich jedoch auf die standard Frameworks beschränkt. Nach dem Generieren der Applikation wurde schon diverse Frontend und Backend Tests implementiert.
+
+# Continious Integration
 Um eine CI zu integrieren kann folgender Befehl im Projektorder ausgeführt werden:
 
 jhipster ci-cd
@@ -72,15 +69,12 @@ Anschließend folgt eine Abfrage, welche Pipeline verwendet werden soll. Folgend
 * Azure Pipelines
 * GitHub Actions
 
-In diesem Projekt soll GitHub Actions verwendet werden und wird dementsprechend ausgewählt. Die darauf folgende Aufforderung eine Integration zu verwenden wird mit 
-Drücken von Enter übersprungen, da dies nicht benötigt wird. Im Anschluss wird im Projektordner ein yaml-Konfigurationsfile erstellt. Diese Änderungen werden anschließend gepushed, sodass Continuous Integration mit GitHub Actions verwendet werden kann. Folgende Abbildung zeigt das Ergebnis:
+In diesem Projekt soll GitHub Actions verwendet werden und wird dementsprechend ausgewählt. Anschluss wird im Projektordner ein yaml-Konfigurationsfile erstellt. Von nun an werden bei jedem Push Github Actions ausgeführt, die Sicherstellen dass die Applikation kompiliert und die Tests alle durch laufen. Folgende Abbildung zeigt das Ergebnis:
 
 ![CI GitHub Actions](./images/CI.PNG)
 
-
-
 # deployment
-Um einen Deploy mit der App durchführen zu können, muss zunächst ein Test für das Production-Package durchgeführt werden. Dies wird mit Maven mit folgendem Befehl durchgeführt:
+Um ein Prod build mit Maven zu testen muss folgender Befehl ausgeführt werden:
 
 ./mvnew -Pprod
 
@@ -92,12 +86,8 @@ Um das Image auszuführen, kann Docker Compose mit der erstellten Konfiguration 
 
 docker-compose -f src/main/docker/app.yml up
 
-
-
-
-
-# fazit
-
+# Fazit
+Abschließend lässt sich sagen, dass Jhipster ein mächtiges Tool ist, um schnell einen ersten Stand einer Anwendung zu entwickeln. Es bietet viele Konfigurationsmöglichkeiten um die verwendeten Technologien auf jeden Anwendungsfall abstimmen zu können. Zusätzlich werden viele Hilfestellungne bereitgestellt, um den Einstieg in die Webentwicklung weiter zu vereinfachen. Außerdem lassen sie die Generatoren anpassen, wodurch der Generierte Code wirklich an jedem Anwendungsfall angepasst werden kann. Noch während dieser Projektarbeit konnte ich mehrmals die Jhipster Version upgrade, was zeigt, dass weiterhin stark daran weiterentwickelt wird und es bleibt spannend welche Features Jhipster in Zukunft noch unterstützen wird.
 
 # AUTO GENERATED DOCUMENTATION
 
